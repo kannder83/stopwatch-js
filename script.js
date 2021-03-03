@@ -27,7 +27,12 @@ function displayTimer() {
   let hh = time_hh < 10 ? `0${time_hh}` : `${time_hh}`;
   let mm = time_mm < 10 ? `0${time_mm}` : `${time_mm}`;
   let ss = time_ss < 10 ? `0${time_ss}` : `${time_ss}`;
-  let ms = time_ms < 10 ? `00${time_ms}` : `${time_ms}`;
+  let ms =
+    time_ms < 10
+      ? `00${time_ms}`
+      : time_ms < 100
+      ? `0${time_ms}`
+      : `${time_ms}`;
 
   hours.innerHTML = hh;
   minutes.innerHTML = mm;

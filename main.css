@@ -3,6 +3,7 @@
   --background-color: #351f39;
   --light-color: #719fb0;
   --softdark-color: #726a95;
+  --shadow-element: 4px 4px 10px 4px rgba(128, 128, 128, 0.4);
 }
 
 * {
@@ -12,7 +13,7 @@
 }
 
 html {
-  font-family: "Wendy One", sans-serif;
+  font-family: "DotGothic16", sans-serif;
 }
 
 .container {
@@ -21,11 +22,11 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(to top, gray, rgb(236, 204, 204));
+  background: linear-gradient(to top, #808080, #eccccc);
 }
 
 .box-clock {
-  width: 300px;
+  width: 310px;
   min-height: 200px;
   background: var(--background-color);
   border-radius: 5px;
@@ -33,28 +34,27 @@ html {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  box-shadow: var(--shadow-element);
 }
 .digital-clock {
   width: 120%;
-  padding: 10px 15px;
+  padding: 10px 5px;
   margin-top: 20px;
   background-color: var(--basic-color);
   border-radius: 5px;
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: 1fr 15px 1fr 15px 1fr 15px 1fr;
   justify-content: center;
+  text-align: center;
+  box-shadow: var(--shadow-element);
 }
 
 .digital-clock p,
 span {
-  padding: 0;
-  margin: 0;
-  width: 25px;
+  width: 100%;
   color: white;
-  font-size: 25px;
-  /* letter-spacing: 3px; */
-  justify-self: center;
-  text-align: center;
+  font-size: 30px;
+  letter-spacing: 4px;
 }
 
 .box-bottons {
@@ -72,6 +72,10 @@ span {
   border: none;
   outline: none;
   background-color: var(--softdark-color);
+  font-family: "DotGothic16", sans-serif;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 15px;
 }
 
 .box-bottons button:hover {
