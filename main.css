@@ -19,15 +19,16 @@ html {
 .container {
   width: 100%;
   height: 100vh;
+  padding-top: 30px;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   background: linear-gradient(to top, #808080, #eccccc);
 }
 
 .box-clock {
   width: 310px;
-  min-height: 200px;
+  min-height: 150px;
   background: var(--background-color);
   border-radius: 5px;
   display: flex;
@@ -66,8 +67,8 @@ span {
 }
 
 .box-bottons button {
-  width: 30%;
-  padding: 8px 10px;
+  width: 20%;
+  padding: 5px;
   border-radius: 5px;
   border: none;
   outline: none;
@@ -81,4 +82,18 @@ span {
 .box-bottons button:hover {
   background-color: var(--light-color);
   outline: none;
+}
+
+.box-lap {
+  width: 90%;
+  min-height: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.box-lap p {
+  margin-bottom: 10px;
+  color: white;
 }

@@ -3,6 +3,8 @@ const minutes = document.getElementById("minutes");
 const seconds = document.getElementById("seconds");
 const milliseconds = document.getElementById("milliseconds");
 
+const lap = document.getElementById("time-lap");
+
 let time_ms = 0;
 let time_ss = 0;
 let time_mm = 0;
@@ -24,28 +26,26 @@ function displayTimer() {
       }
     }
   }
-  let hh = time_hh < 10 ? `0${time_hh}` : `${time_hh}`;
-  let mm = time_mm < 10 ? `0${time_mm}` : `${time_mm}`;
-  let ss = time_ss < 10 ? `0${time_ss}` : `${time_ss}`;
-  let ms =
-    time_ms < 10
-      ? `00${time_ms}`
-      : time_ms < 100
-      ? `0${time_ms}`
-      : `${time_ms}`;
 
-  // hours.innerHTML = hh;
-  // minutes.innerHTML = mm;
-  // seconds.innerHTML = ss;
-  // milliseconds.innerHTML = ms;
-  writeTime(hh, mm, ss, ms);
+  writeTime("display", time_hh, time_mm, time_ss, time_ms);
 }
 
-function writeTime(hh, mm, ss, ms) {
-  hours.innerHTML = hh;
-  minutes.innerHTML = mm;
-  seconds.innerHTML = ss;
-  milliseconds.innerHTML = ms;
+function writeTime(whereDisplay, now_hh, now_mm, now_ss, now_ms) {
+  let hh = now_hh < 10 ? `0${now_hh}` : `${now_hh}`;
+  let mm = now_mm < 10 ? `0${now_mm}` : `${now_mm}`;
+  let ss = now_ss < 10 ? `0${now_ss}` : `${now_ss}`;
+  let ms =
+    now_ms < 10 ? `00${now_ms}` : now_ms < 100 ? `0${now_ms}` : `${now_ms}`;
+
+  if (whereDisplay == "display") {
+    hours.innerHTML = hh;
+    minutes.innerHTML = mm;
+    seconds.innerHTML = ss;
+    milliseconds.innerHTML = ms;
+  }
+  if (whereDisplay == "lap") {
+    lap.innerHTML += `${hh} : ${mm} : ${ss} : ${ms} <br>`;
+  }
 }
 
 const clickBtn = document.querySelector(".box-bottons");
@@ -57,23 +57,30 @@ clickBtn.addEventListener("click", (event) => {
       document.getElementById("start").disabled = true;
       document.getElementById("reset").disabled = false;
       document.getElementById("pause").disabled = false;
+      document.getElementById("lap").disabled = false;
       break;
     case "pause":
       clearInterval(interval);
       document.getElementById("start").disabled = false;
       document.getElementById("pause").disabled = true;
       document.getElementById("reset").disabled = false;
+      document.getElementById("lap").disabled = true;
       break;
     case "reset":
       clearInterval(interval);
-      writeTime("00", "00", "00", "000");
+      writeTime("display", 0, 0, 0, 0);
       document.getElementById("start").disabled = false;
       document.getElementById("pause").disabled = true;
       document.getElementById("reset").disabled = true;
+      document.getElementById("lap").disabled = true;
       time_ms = 0;
       time_ss = 0;
       time_mm = 0;
       time_hh = 0;
+      lap.innerHTML = "";
+      break;
+    case "lap":
+      writeTime("lap", time_hh, time_mm, time_ss, time_ms);
       break;
   }
 });
