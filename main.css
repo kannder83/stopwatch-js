@@ -1,0 +1,80 @@
+:root {
+  --basic-color: #a0c1b8;
+  --background-color: #351f39;
+  --light-color: #719fb0;
+  --softdark-color: #726a95;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Wendy One", sans-serif;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to top, gray, rgb(236, 204, 204));
+}
+
+.box-clock {
+  width: 300px;
+  min-height: 200px;
+  background: var(--background-color);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.digital-clock {
+  width: 120%;
+  padding: 10px 15px;
+  margin-top: 20px;
+  background-color: var(--basic-color);
+  border-radius: 5px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  justify-content: center;
+}
+
+.digital-clock p,
+span {
+  padding: 0;
+  margin: 0;
+  width: 25px;
+  color: white;
+  font-size: 25px;
+  /* letter-spacing: 3px; */
+  justify-self: center;
+  text-align: center;
+}
+
+.box-bottons {
+  width: 90%;
+  min-height: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.box-bottons button {
+  width: 30%;
+  padding: 8px 10px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  background-color: var(--softdark-color);
+}
+
+.box-bottons button:hover {
+  background-color: var(--light-color);
+  outline: none;
+}
